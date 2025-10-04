@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/quiz")
 public class QuizController {
 
-    private QuizService quizService;
+    private final QuizService quizService;
 
     public QuizController(QuizService quizService) {
         this.quizService = quizService;
