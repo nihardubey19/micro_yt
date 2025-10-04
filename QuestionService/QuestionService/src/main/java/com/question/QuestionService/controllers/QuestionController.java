@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/question")
 public class QuestionController {
 
-    private QuestionService questionService;
+    private final QuestionService questionService;
 
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
@@ -41,4 +41,8 @@ public class QuestionController {
         return questionService.getQuestionsOfQuiz(quizId);
     }
 
+    @DeleteMapping("/{questionId}")
+    public List<Question> deleteQuestion(@PathVariable Long questionId){
+        return questionService.deleteQuestion(questionId);
+    }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
-    private QuestionRepository questionRepository;
+    private final QuestionRepository questionRepository;
 
     public QuestionServiceImpl(QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
@@ -34,5 +34,11 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<Question> getQuestionsOfQuiz(Long quizId) {
         return questionRepository.findByQuizId(quizId);
+    }
+
+    @Override
+    public List<Question> deleteQuestion(Long questionId) {
+        questionRepository.deleteById(questionId);
+        return get();
     }
 }
